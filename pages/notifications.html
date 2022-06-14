@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>CruiseGC</title>
+    <link rel="icon" href="../img/cruise icon.jpg" />
+    <style>
+      .container-main {
+        background-color: rgb(233, 233, 233);
+        display: flex;
+        flex-direction: row;
+        padding-bottom: 0.8rem;
+        font-size: 0.8rem;
+      }
+      .container-main:hover {
+        background-color: rgb(196, 196, 196);
+      }
+      .avatars-notify {
+        padding-bottom: 1.6rem;
+        /* background-color: rgb(233, 233, 233); */
+
+        padding: 1rem;
+        /* border-bottom: #000 solid 0.1px; */
+      }
+      .avatar-notify {
+        position: relative;
+        /* top: 10px; */
+        height: 5rem;
+        width: 5rem;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      .notification_cont {
+        flex: 1;
+        padding-top: 1rem;
+        align-items: center;
+
+        /* background-color: rgb(233, 233, 233); */
+        display: flex;
+        flex-direction: row;
+      }
+      .notifications {
+        display: inline-block;
+      }
+      .dateAndTime {
+        font-size: 10px;
+        /* background-color: rgb(233, 233, 233); */
+        justify-content: flex-end;
+        align-items: flex-end;
+        display: flex;
+        position: relative;
+        flex-direction: row;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Section -->
+
+    <nav class="navigation" style="padding-top: 16px; padding-top: 16px">
+      <div class="navigation_container container">
+        <div class="navigation_list">
+          <a href="/" class="navigation_link">Home</a>
+          <a
+            href="members.html"
+            class="navigation_link"
+            rel="whyCoding"
+            id="whyCoding"
+            >Members</a
+          >
+          <a
+            href="pictures.html"
+            class="navigation_link"
+            rel="programBenefits"
+            id="programBenefits"
+            >Pictures</a
+          >
+          <a
+            href="videos.html"
+            class="navigation_link"
+            rel="courseBreakdown"
+            id="courseBreakdown"
+            >Videos</a
+          >
+          <a
+            href="#notifictions"
+            class="navigation_link activeLink"
+            rel="careerPath"
+            id="careerPath"
+            >Notifications</a
+          >
+        </div>
+        <!--  -->
+      </div>
+    </nav>
+    <!-- DIV -->
+    <a
+      style="text-decoration: none; color: #000"
+      href="https://chat.whatsapp.com/GyEZXyHl34fBpzVC01PjkT"
+    >
+      <div class="container-main">
+        <ul class="notification_cont">
+          <img
+            class="avatar-notify"
+            src="./birthdays/img/istockphoto-858514508-612x612.jpg"
+          />
+          <li class="avatars-notify">
+            <span class="notifications">
+              <span
+                >It's <span style="font-weight: 600">Smile😁's</span> birthday
+                today. Send her good wishes in the whatsapp group chat <br />
+                <div>🎁</div>
+              </span>
+            </span>
+          </li>
+        </ul>
+        <div class="dateAndTime">May 3 at 12:12 AM</div>
+      </div>
+    </a>
+    <!--  -->
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="jquery.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

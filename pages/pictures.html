@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>CruiseGC</title>
+    <link rel="icon" href="../img/cruise icon.jpg" />
+    <!-- <style>
+      .pictures_container {
+        width: 100%;
+        padding: 2rem 0rem 2rem 1rem;
+        display: inline-block;
+      }
+      /* .w-100 shadow-1-strong rounded mb-4,
+      .w-100 shadow-1-strong rounded mb-41 {
+        width: auto;
+        height: 13rem;
+        object-fit: cover;
+        padding: 0.1rem;
+        border-radius: 5px;
+      } */
+      .zoom {
+        width: 100vw;
+        height: 100vh;
+        z-index: 100000;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        position: sticky;
+        overflow-y: hidden;
+      }
+    </style> -->
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial;
+        overflow-x: hidden;
+      }
+
+      /* The grid: Four equal columns that floats next to each other */
+      .column {
+        float: left;
+        width: 25%;
+        padding: 10px;
+      }
+
+      /* Style the images inside the grid */
+      .column img {
+        opacity: 0.8;
+        cursor: pointer;
+      }
+
+      .column img:hover {
+        opacity: 1;
+      }
+      .row {
+        width: 100vw;
+      }
+
+      /* Clear floats after the columns */
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      /* The expanding image container */
+      .containerImg {
+        margin: 0px;
+        padding: 0px;
+        position: relative;
+        display: none;
+        width: 96vw;
+        height: 100vh;
+        z-index: 9999990;
+        align-items: center;
+        justify-content: center;
+        /* object-fit: cover; */
+        border-radius: 5px;
+        position: sticky;
+        overflow-y: hidden;
+      }
+      @media screen and (min-width: 540px) {
+        .containerImg {
+          margin: 0;
+          padding: 0;
+          position: relative;
+          display: none;
+          width: 60%;
+          height: 100%;
+          z-index: 1;
+          align-items: center;
+          justify-content: center;
+          padding-left: 40%;
+          border-radius: 5px;
+          position: sticky;
+          overflow-y: hidden;
+        }
+      }
+
+      /* Expanding image text */
+      #imgtext {
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+        color: white;
+        font-size: 20px;
+      }
+
+      /* Closable button inside the expanded image */
+
+      .closebtn {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        color: white;
+        font-size: 35px;
+        cursor: pointer;
+        animation-name: closeBtn-animation; /* Refers to the name of your @keyframes element below */
+        animation-duration: 2.5s; /* Change to speed up or slow down */
+        animation-iteration-count: infinite; /* Never stop waving :) */
+        transform-origin: 70% 70%; /* Pivot around the bottom-left palm */
+      }
+
+      @keyframes closeBtn-animation {
+        0% {
+          transform: rotate(0deg);
+        }
+        10% {
+          transform: rotate(14deg);
+        } /* The following five values can be played with to make the waving more or less extreme */
+        20% {
+          transform: rotate(-8deg);
+        }
+        30% {
+          transform: rotate(14deg);
+        }
+        40% {
+          transform: rotate(-4deg);
+        }
+        50% {
+          transform: rotate(10deg);
+        }
+        60% {
+          transform: rotate(0deg);
+        } /* Reset for the last half to pause */
+        100% {
+          transform: rotate(0deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Section -->
+
+    <nav class="navigation" style="padding-top: 16px; padding-top: 16px">
+      <div class="navigation_container container">
+        <div class="navigation_list">
+          <a href="/" class="navigation_link">Home</a>
+          <a
+            href="members.html"
+            class="navigation_link"
+            rel="whyCoding"
+            id="whyCoding"
+            >Members</a
+          >
+          <a
+            href="#pictures"
+            class="navigation_link activeLink"
+            rel="programBenefits"
+            id="programBenefits"
+            >Pictures</a
+          >
+          <a
+            href="./videos.html"
+            class="navigation_link"
+            rel="courseBreakdown"
+            id="courseBreakdown"
+            >Videos</a
+          >
+          <a
+            href="./notifications.html"
+            class="navigation_link"
+            rel="careerPath"
+            id="careerPath"
+            >Notifications</a
+          >
+        </div>
+        <!--  -->
+      </div>
+      <div class="containerImg">
+        <span onclick="this.parentElement.style.display='none'" class="closebtn"
+          >&times;</span
+        >
+        <img id="expandedImg" style="width: 100%" />
+        <div id="imgtext"></div>
+      </div>
+    </nav>
+    <!--  -->
+
+    <!-- <div style="text-align: center">
+      <p>Click on the images below for fullscreen:</p>
+    </div> -->
+
+    <!-- modal -->
+
+    <!--  -->
+
+    <!-- The four columns -->
+    <div class="row">
+      <div class="column">
+        <img
+          src="img/eight.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/eleven.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/fifteen.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/five.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/four.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/fourteen.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220222-WA0161.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220222-WA0171.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220222-WA0176.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220223-WA0133.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220224-WA0317.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220224-WA0318.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220224-WA0319.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220224-WA0330.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220226-WA0043.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220227-WA0025.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220301-WA0021.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220301-WA0022.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220301-WA0045.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220301-WA0046.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220301-WA0048.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220301-WA0050.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220301-WA0162.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220305-WA0055.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220311-WA0333.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220311-WA0576.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220314-WA0020.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220314-WA0125.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220314-WA0154.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220315-WA0000.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220315-WA0139.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220315-WA0149.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220315-WA0210.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220316-WA0008.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220316-WA0010.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220316-WA0011.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220316-WA0012.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220317-WA0013.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220317-WA0134.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220317-WA0135.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220317-WA0208.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220317-WA0263.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220317-WA0265.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220318-WA0286.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220318-WA0373.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220319-WA0243.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220319-WA0245.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220319-WA0246.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220319-WA0247.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220319-WA0249.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220319-WA0251.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220319-WA0252.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220319-WA0253.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220320-WA0149.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220320-WA0150.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220320-WA0433.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220320-WA0436.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220321-WA0013.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220321-WA0158.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220321-WA0215.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220321-WA0216.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220322-WA0066.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220324-WA0050.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220330-WA0009.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220401-WA0126.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220403-WA0065.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220403-WA0067.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220403-WA0093.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220404-WA0071.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220404-WA0073.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220408-WA0033.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220414-WA0108.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220416-WA0146.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220418-WA0058.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220418-WA0062.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220419-WA0187.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220419-WA0188.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220419-WA0191.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-20220420-WA0012.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/IMG-l01du2vz.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/nine.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/one.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/seven.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/six.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/ten.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/thirteen.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/twelve.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/two.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/newPatience.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/new/IMG-20220131-WA0000.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/newPatience2.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/new/IMG-20220416-WA0146.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/new/IMG-20220423-WA0000.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/new/IMG-20220416-WA0146.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/new/IMG-20220424-WA0129.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/new/IMG-20220426-WA0002.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/new/IMG-20220426-WA0117.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/new/IMG-20220426-WA0170.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/new/IMG-20220428-WA0021.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/new/IMG-20220429-WA0074.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/new/newMariam.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+
+      <div class="column">
+        <img
+          src="img/new/IMG-20220515-WA0137.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/new/IMG-20220515-WA0138.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/new/IMG-20220515-WA0140.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/new/IMG-20220515-WA0141.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/new/IMG-20220515-WA0143.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="img/new/IMG-20220515-WA0144.jpg"
+          alt=""
+          style="width: 100%"
+          onclick="myFunction(this);"
+        />
+      </div>
+    </div>
+
+    <script>
+      function myFunction(imgs) {
+        var expandImg = document.getElementById("expandedImg");
+        var imgText = document.getElementById("imgtext");
+        expandImg.src = imgs.src;
+        imgText.innerHTML = imgs.alt;
+        expandImg.parentElement.style.display = "block";
+      }
+    </script>
+
+    <!--  -->
+    <!-- DIV -->
+
+    <!--  -->
+    <!-- <div class="row">
+      <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+        <span>
+          <img
+            class="w-100 shadow-1-strong rounded mb-4"
+            rel="imgs"
+            src="img/one.jpg"
+          />
+        </span>
+        <span>
+          <img
+            class="w-100 shadow-1-strong rounded mb-4"
+            src="img/two.jpg"
+            alt=""
+          />
+        </span>
+        <span>
+          <img
+            class="w-100 shadow-1-strong rounded mb-4"
+            src="img/three.jpg"
+            alt=""
+          />
+        </span>
+        <span>
+          <img
+            class="w-100 shadow-1-strong rounded mb-4"
+            src="img/four.jpg"
+            alt=""
+          />
+        </span>
+        <span>
+          <img
+            class="w-100 shadow-1-strong rounded mb-4"
+            src="img/five.jpg"
+            alt=""
+          />
+        </span>
+        <span>
+          <img
+            class="w-100 shadow-1-strong rounded mb-4"
+            src="img/six.jpg"
+            alt=""
+          />
+        </span>
+        <span>
+          <img
+            class="w-100 shadow-1-strong rounded mb-4"
+            src="img/seven.jpg"
+            alt=""
+          />
+        </span>
+        <span>
+          <img
+            class="w-100 shadow-1-strong rounded mb-4"
+            src="img/eight.jpg"
+            alt=""
+          />
+        </span>
+        <span>
+          <img
+            class="w-100 shadow-1-strong rounded mb-4"
+            src="img/nine.jpg"
+            alt=""
+          />
+        </span>
+        <span>
+          <img
+            class="w-100 shadow-1-strong rounded mb-4"
+            src="img/ten.jpg"
+            alt=""
+          />
+        </span>
+        <span>
+          <img
+            class="w-100 shadow-1-strong rounded mb-4"
+            src="img/eleven.jpg"
+            alt=""
+          />
+        </span>
+        <span>
+          <img
+            class="w-100 shadow-1-strong rounded mb-4"
+            src="img/twelve.jpg"
+            alt=""
+          />
+        </span>
+      </div>
+    </div> -->
+    <!--  -->
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="../jquery.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
